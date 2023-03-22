@@ -16,6 +16,7 @@ class RVAdapter(val context : Context, val List : MutableList<ContentsModel>) : 
         return  ViewHolder(v)
     }
 
+    //RecyclerView 아이템 클릭 시작
     interface  ItemClick{
         fun onClick(view : View, position: Int)
     }
@@ -34,6 +35,8 @@ class RVAdapter(val context : Context, val List : MutableList<ContentsModel>) : 
     override fun getItemCount(): Int {
         return List.size
     }
+    //RecyclerView 아이템 클릭 종료
+
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         fun bindItems(item : ContentsModel){
@@ -43,6 +46,8 @@ class RVAdapter(val context : Context, val List : MutableList<ContentsModel>) : 
             val rvImg = itemView.findViewById<ImageView>(R.id.rvImageArea)
 
             rvText.text = item.titleText
+
+            //glide활용한 이미지 가져오기
             Glide.with(context)
                 .load(item.ImageURL)
                 .into(rvImg)
